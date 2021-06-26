@@ -1,5 +1,6 @@
 "use strict";
 
+const { response } = require("express");
 const express = require("express");
 const contractRouter = require("./modules/contract");
 const customerRouter = require("./modules/customer");
@@ -11,6 +12,10 @@ app.use(express.json());
 
 app.use("/contract", contractRouter);
 app.use("/customer", customerRouter);
+
+app.get("/", (req, resp) => {
+  resp.send("Hello, from Contract Man...");
+})
 
 const port = process.env.PORT || 3000;
 
